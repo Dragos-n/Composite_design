@@ -1,13 +1,12 @@
 #pragma once
 #include "Menu.h"
-#include <string>
 #include <list>
 using namespace std;
 
 class Composite: public Menu
 {
 public:
-	Composite(string new_composite_s);
+	using Menu::Menu;
 	~Composite();
 	void Add(Menu* composite_p);
 	void Print(unsigned int hierarchy_level);
@@ -15,7 +14,7 @@ public:
 	{
 		return true;
 	};
+	//explicit Composite(std::string new_component_s) : Menu(new_component_s) {};
 private:
-	char* CompositeName_p;
 	list<Menu*> MenuList_p;
 };

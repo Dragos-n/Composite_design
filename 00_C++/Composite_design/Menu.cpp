@@ -1,13 +1,15 @@
 #include "Menu.h"
 #include <iostream>
 
-Menu::Menu()
+Menu::Menu(std::string new_component_s)
 {
-	std::cout << "Menu()" << std::endl;
-}
+	ComponentName_p = new char[sizeof(new_component_s)];
+	strcpy_s(ComponentName_p, sizeof(new_component_s), new_component_s.c_str());
+	std::cout << "Component()" << std::endl;
+};
 
 
 Menu::~Menu()
 {
-	std::cout << "~Menu()" << std::endl;
-}
+	std::cout << "~Component()" << std::endl;
+};

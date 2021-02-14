@@ -9,10 +9,8 @@ class SubMenu : public Menu
 {
 public:
 
-	SubMenu(string new_submenu_s);
+	using Menu::Menu;
 	~SubMenu();
 	void Print(unsigned int hierarchy_level);
-
-private:
-	char* SubmenuName_p;
+	//explicit SubMenu(std::string new_component_s) : Menu(new_component_s) {};
 };
