@@ -30,9 +30,9 @@ int main()
 
 	std::cout << endl << endl;
 
-	Menu1->Print(1);
-	Menu2->Print(1);
-	Menu3->Print(1);
+	Menu1->Print(0);
+	Menu2->Print(0);
+	Menu3->Print(0);
 
 	std::cout << endl << endl;
 

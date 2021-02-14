@@ -23,11 +23,15 @@
 		cout << this->CompositeName_p << endl;
 		for (auto submenu : MenuList_p)
 		{
+			if (submenu->isComposite())
+			{
+				++hierarchy_level;
+			}
 			for (unsigned int counter = 0; counter < hierarchy_level; counter++)
 			{
 				cout << "\t";
 			}
-			submenu->Print(hierarchy_level++);
+			submenu->Print(hierarchy_level);
 		}
 		cout << endl;
 	};

@@ -15,5 +15,5 @@ SubMenu::~SubMenu()
 }
 void SubMenu::Print(unsigned int hierarchy_level)
 {
-	cout << SubmenuName_p << endl;
+	cout << "\t" << SubmenuName_p << endl;
 }

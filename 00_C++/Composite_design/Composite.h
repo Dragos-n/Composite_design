@@ -11,6 +11,10 @@ public:
 	~Composite();
 	void Add(Menu* composite_p);
 	void Print(unsigned int hierarchy_level);
+	bool isComposite()
+	{
+		return true;
+	};
 private:
 	char* CompositeName_p;
 	list<Menu*> MenuList_p;
