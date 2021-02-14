@@ -1,114 +1,48 @@
-/* Composite design.cpp */
+/* Main file Source.cpp */
 
-#include <vector>
-#include <string>
+#include "Menu.h"
+#include "Submenu.h"
+#include "Composite.h"
 #include <iostream>
-using namespace std;
 
-/* Component class */
-
-class Menu
-{
-public:
-
-	virtual void Add(Menu* new_menu) {};
-	virtual void Component_print() {};
-	virtual ~Menu() {};
-};
-
-/*Leaf class*/
-
-class SubMenu : public Menu {
-
-private:
-
-	string submenu_s;
-
-public:
-
-	SubMenu(string submenu_s)
-	{
-		this->submenu_s = submenu_s;
-	};
-
-	~SubMenu()
-	{
-		submenu_s.erase(std::remove(submenu_s.begin(), submenu_s.end(), '\t'), submenu_s.end());
-		std::cout << submenu_s << " deleted" << endl;
-	};
-
-	virtual void Add(Menu* new_submenu_p)
-	{
-	};
-
-	void Component_print()
-	{
-		cout << this->submenu_s << endl;
-	};
-};
-
-/*Composite class*/
-
-class Composite : public Menu {
-
-private:
-	vector <Menu*> menu_list;
-	string menu_s;
-
-public:
-
-	void Add(Menu* composite_p)
-	{
-		menu_list.push_back(composite_p);
-	}
-
-	Composite(string new_menu_s)
-	{
-		this->menu_s = new_menu_s;
-	};
-
-	~Composite()
-	{
-		menu_s.erase(std::remove(menu_s.begin(), menu_s.end(), '\t'), menu_s.end());
-		std::cout << menu_s << " deleted" << endl;
-	};
-
-	void Component_print()
-	{
-		cout << this->menu_s << endl;
-		for (auto submenu : menu_list)
-		{
-			submenu->Component_print();
-		}
-		cout << endl;
-	};
-
-};
 
 int main()
 {
-	Composite m1("Menu1");
-	Composite m2("Menu2");
-	Composite m3("Menu3");
-	SubMenu s1("\tSubMenu1");
-	SubMenu s2("\tSubMenu2");
-	Composite s3("\tSubMenu3");
-	SubMenu ss1("\t\tSubSubMenu1");
-	SubMenu ss2("\t\tSubSubMenu2");
-	
-	m1.Add(&s1);
-	m1.Add(&s2);
+	Composite* Menu1 = new Composite("Menu_1");
+	Composite* Menu2 = new Composite("Menu_2");
+	Composite* Menu3 = new Composite("Menu_3");
 
-	s3.Add(&ss1);
-	s3.Add(&ss2);
-	m2.Add(&s1);
-	m2.Add(&s3);
-	
-	m3.Add(&m1);
-	m3.Add(&m2);
+	SubMenu* Submenu1 = new SubMenu("Submenu_1");
+	SubMenu* Submenu2 = new SubMenu("Submenu_2");
+	SubMenu* Submenu3 = new SubMenu("Submenu_3");
+	SubMenu* Submenu4 = new SubMenu("Submenu_4");
 
-	m1.Component_print();
-	m2.Component_print();
-	m3.Component_print();
+	Menu1->Add(Submenu1);
+	Menu1->Add(Submenu2);
+	Menu1->Add(Submenu3);
+	
+	Menu2->Add(Submenu3);
+	Menu2->Add(Submenu4);
+	Menu2->Add(Menu1);
+
+	Menu3->Add(Submenu1);
+	Menu3->Add(Menu2);
+
+	std::cout << endl << endl;
+
+	Menu1->Print(1);
+	Menu2->Print(1);
+	Menu3->Print(1);
+
+	std::cout << endl << endl;
+
+	delete Menu1;
+	delete Menu2;
+	delete Menu3;
+	delete Submenu1;
+	delete Submenu2;
+	delete Submenu3;
+	delete Submenu4;
+
 	return 0;
 }
