@@ -1,7 +1,6 @@
 /* Main file Source.cpp */
 
 #include "Menu.h"
-#include "Submenu.h"
 #include "Composite.h"
 #include <iostream>
 
@@ -12,10 +11,10 @@ int main()
 	Composite* Menu2 = new Composite("Menu_2");
 	Composite* Menu3 = new Composite("Menu_3");
 
-	SubMenu* Submenu1 = new SubMenu("Submenu_1");
-	SubMenu* Submenu2 = new SubMenu("Submenu_2");
-	SubMenu* Submenu3 = new SubMenu("Submenu_3");
-	SubMenu* Submenu4 = new SubMenu("Submenu_4");
+	Composite* Submenu1 = new Composite("Submenu_1");
+	Composite* Submenu2 = new Composite("Submenu_2");
+	Composite* Submenu3 = new Composite("Submenu_3");
+	Composite* Submenu4 = new Composite("Submenu_4");
 
 	Menu1->Add(Submenu1);
 	Menu1->Add(Submenu2);
